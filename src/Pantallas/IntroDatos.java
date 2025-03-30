@@ -4,6 +4,12 @@
  */
 package Pantallas;
 
+import Data.FicheroDia;
+import java.awt.Color;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  *
  * @author baske
@@ -17,7 +23,70 @@ public class IntroDatos extends javax.swing.JPanel {
     public IntroDatos() {
         initComponents();
         InfoMacros.setVisible(false);
+        AdCampos.setVisible(false);
+        AlimentoAdd.setVisible(false);
     }
+    public void generarCalTotal(){
+        try{
+        FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia(), true);
+        escritor.write(FicheroDia.calculoCalorico(TxtPeso.getText(),TxtCalorias.getText()));
+        escritor.close();
+        }catch(FileNotFoundException ex){
+            System.out.println("Ruta no encontrada en el fichero de calorias totales");
+        }catch(IOException e){
+            System.out.println("Fallo fatal con el escritor de caltotales");
+        }
+    }
+    
+    /**
+     * Este metodo genera un txt en la ruta seleccionada para mantener el control del nombre,peso y calorias que ha consumido el usuario
+     */
+    public void generarAlimentoBasico() {
+        if(comprobarDatos()){
+        try {
+            FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\Dias\\" +"Dia " + FicheroDia.sacarDia(), true);
+            escritor.write(TxtAlimento.getText() + "\n");
+            escritor.write(TxtPeso.getText() + "\n");
+            escritor.write(TxtCalorias.getText() + "\n");
+            escritor.close();
+            generarCalTotal();
+            AlimentoAdd.setVisible(true);
+            borrarCamposBasicos();
+            AdCampos.setVisible(false);
+        } catch (FileNotFoundException ex) {
+            System.out.println("Ruta de archivo no encontrada");
+        } catch (IOException e) {
+            System.out.println("Fallo en el escritor de archivo Dias");
+        }
+        }else{
+            AdCampos.setVisible(true);
+            System.out.println("Valores no numericos");
+        }
+    }
+    public void borrarCamposBasicos(){
+            TxtAlimento.setText("");
+            TxtPeso.setText("");
+            TxtCalorias.setText("");
+    }
+    
+    /**
+     * Este metodo se asegura de que lo introducido en los campos Peso y
+     * calorias sea un numero con o sin decimales
+     *
+     * @return true si es un numero, false si no lo es
+     */
+    public boolean comprobarDatos() {
+        String expReg = "(^\\d{1,}$)|(^\\d{1,}(,|.)\\d{1,}$)";
+        if (TxtCalorias.getText().matches(expReg) && TxtPeso.getText().matches(expReg)) {
+            System.out.println("Expresion regular correcta");
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,9 +117,9 @@ public class IntroDatos extends javax.swing.JPanel {
         jLabel15 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        TxtCalorias = new javax.swing.JTextField();
+        TxtAlimento = new javax.swing.JTextField();
+        TxtPeso = new javax.swing.JTextField();
         InfoMacros = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -59,7 +128,9 @@ public class IntroDatos extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        Añadir = new javax.swing.JLabel();
+        AlimentoAdd = new javax.swing.JLabel();
+        AdCampos = new javax.swing.JLabel();
 
         Lienzo.setBackground(new java.awt.Color(255, 255, 255));
         Lienzo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -217,32 +288,32 @@ public class IntroDatos extends javax.swing.JPanel {
 
         Lienzo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 310, 180));
 
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TxtCalorias.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        TxtCalorias.setBorder(null);
+        TxtCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TxtCaloriasActionPerformed(evt);
             }
         });
-        Lienzo.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 280, -1));
+        Lienzo.add(TxtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 280, -1));
 
-        jTextField2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        TxtAlimento.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        TxtAlimento.setBorder(null);
+        TxtAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                TxtAlimentoActionPerformed(evt);
             }
         });
-        Lienzo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 280, -1));
+        Lienzo.add(TxtAlimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 280, -1));
 
-        jTextField3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jTextField3.setBorder(null);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        TxtPeso.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        TxtPeso.setBorder(null);
+        TxtPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                TxtPesoActionPerformed(evt);
             }
         });
-        Lienzo.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 280, -1));
+        Lienzo.add(TxtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 280, -1));
 
         InfoMacros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -314,11 +385,56 @@ public class IntroDatos extends javax.swing.JPanel {
 
         Lienzo.add(InfoMacros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 300, 170));
 
-        jLabel16.setBackground(new java.awt.Color(214, 217, 223));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("AÑADIR");
-        jLabel16.setOpaque(true);
-        Lienzo.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 90, 40));
+        Añadir.setBackground(new java.awt.Color(214, 217, 223));
+        Añadir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Añadir.setText("AÑADIR");
+        Añadir.setOpaque(true);
+        Añadir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AñadirMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AñadirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AñadirMouseExited(evt);
+            }
+        });
+        Lienzo.add(Añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 90, 40));
+
+        AlimentoAdd.setBackground(new java.awt.Color(214, 217, 223));
+        AlimentoAdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AlimentoAdd.setText("ALIMENTO AÑADIDO");
+        AlimentoAdd.setOpaque(true);
+        AlimentoAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AlimentoAddMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AlimentoAddMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AlimentoAddMouseExited(evt);
+            }
+        });
+        Lienzo.add(AlimentoAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 150, 40));
+
+        AdCampos.setBackground(new java.awt.Color(214, 217, 223));
+        AdCampos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        AdCampos.setText("RELLENA LOS CAMPOS");
+        AdCampos.setOpaque(true);
+        AdCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AdCamposMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdCamposMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdCamposMouseExited(evt);
+            }
+        });
+        Lienzo.add(AdCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -332,17 +448,17 @@ public class IntroDatos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TxtCaloriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCaloriasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TxtCaloriasActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void TxtAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtAlimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_TxtAlimentoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void TxtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_TxtPesoActionPerformed
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         if(!infoMacros){
@@ -366,11 +482,56 @@ public class IntroDatos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
+    private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
+       Añadir.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_AñadirMouseEntered
+
+    private void AñadirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseExited
+        Añadir.setForeground(new Color(0, 0 , 0));
+    }//GEN-LAST:event_AñadirMouseExited
+
+    private void AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseClicked
+        AlimentoAdd.setVisible(false);
+        AdCampos.setVisible(false);
+        comprobarDatos();
+        generarAlimentoBasico();
+    }//GEN-LAST:event_AñadirMouseClicked
+
+    private void AlimentoAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlimentoAddMouseClicked
+        AlimentoAdd.setVisible(false);
+    }//GEN-LAST:event_AlimentoAddMouseClicked
+
+    private void AlimentoAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlimentoAddMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlimentoAddMouseEntered
+
+    private void AlimentoAddMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlimentoAddMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AlimentoAddMouseExited
+
+    private void AdCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdCamposMouseClicked
+         AdCampos.setVisible(false);
+    }//GEN-LAST:event_AdCamposMouseClicked
+
+    private void AdCamposMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdCamposMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdCamposMouseEntered
+
+    private void AdCamposMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdCamposMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdCamposMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AdCampos;
+    private javax.swing.JLabel AlimentoAdd;
+    private javax.swing.JLabel Añadir;
     private javax.swing.JPanel InfoMacros;
     private javax.swing.JPanel Lienzo;
     private javax.swing.JLabel TitIntroducir;
+    private javax.swing.JTextField TxtAlimento;
+    private javax.swing.JTextField TxtCalorias;
+    private javax.swing.JTextField TxtPeso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -378,7 +539,6 @@ public class IntroDatos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -394,9 +554,6 @@ public class IntroDatos extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
