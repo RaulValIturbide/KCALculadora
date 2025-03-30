@@ -18,7 +18,9 @@ public class FicheroCalData {
      * que al separarse por dias ser� el de hoy
      * @return devuelve un String que es un numero con la suma de las calorias totales
      */
-    private static String ruta = "C:\\Users\\baske\\Documents\\dev\\Cacharreo\\KCALculadora\\src\\tools\\etc\\CalDia\\CalDia " + FicheroDia.sacarDia();
+    private static String ruta = ".\\src\\tools\\etc\\CalDia\\CalTot " + FicheroDia.sacarDia();
+    
+   
     public static String totalCalorias() {
         String Parrafo = "";
         try {

@@ -135,24 +135,24 @@ public class IntroDatos extends javax.swing.JPanel {
         Lienzo.setBackground(new java.awt.Color(255, 255, 255));
         Lienzo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        TitIntroducir.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
+        TitIntroducir.setFont(new java.awt.Font("Roboto", 1, 32)); // NOI18N
         TitIntroducir.setText("INTRODUCIR DATOS");
-        Lienzo.add(TitIntroducir, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 350, 80));
+        Lienzo.add(TitIntroducir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 350, 80));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("NOMBRE ALIMENTO");
-        Lienzo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 180, 50));
-        Lienzo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 280, 20));
-        Lienzo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 280, 20));
+        Lienzo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 180, 50));
+        Lienzo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 280, 20));
+        Lienzo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 280, 20));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel2.setText("PESO (GR)");
-        Lienzo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 160, 50));
-        Lienzo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 280, 20));
+        Lienzo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, 50));
+        Lienzo.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 280, 20));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("CALORIAS EN 100 GR");
-        Lienzo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 190, 50));
+        Lienzo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 190, 50));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -286,7 +286,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        Lienzo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 310, 180));
+        Lienzo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 310, 180));
 
         TxtCalorias.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         TxtCalorias.setBorder(null);
@@ -295,7 +295,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 TxtCaloriasActionPerformed(evt);
             }
         });
-        Lienzo.add(TxtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 280, -1));
+        Lienzo.add(TxtCalorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 280, -1));
 
         TxtAlimento.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         TxtAlimento.setBorder(null);
@@ -304,7 +304,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 TxtAlimentoActionPerformed(evt);
             }
         });
-        Lienzo.add(TxtAlimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 280, -1));
+        Lienzo.add(TxtAlimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 280, -1));
 
         TxtPeso.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         TxtPeso.setBorder(null);
@@ -313,7 +313,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 TxtPesoActionPerformed(evt);
             }
         });
-        Lienzo.add(TxtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 280, -1));
+        Lienzo.add(TxtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 280, -1));
 
         InfoMacros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -383,7 +383,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 .addGap(16, 16, 16))
         );
 
-        Lienzo.add(InfoMacros, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 420, 300, 170));
+        Lienzo.add(InfoMacros, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 300, 170));
 
         Añadir.setBackground(new java.awt.Color(214, 217, 223));
         Añadir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -400,7 +400,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 AñadirMouseExited(evt);
             }
         });
-        Lienzo.add(Añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 90, 40));
+        Lienzo.add(Añadir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 90, 40));
 
         AlimentoAdd.setBackground(new java.awt.Color(214, 217, 223));
         AlimentoAdd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -417,7 +417,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 AlimentoAddMouseExited(evt);
             }
         });
-        Lienzo.add(AlimentoAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 150, 40));
+        Lienzo.add(AlimentoAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 150, 40));
 
         AdCampos.setBackground(new java.awt.Color(214, 217, 223));
         AdCampos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -434,7 +434,7 @@ public class IntroDatos extends javax.swing.JPanel {
                 AdCamposMouseExited(evt);
             }
         });
-        Lienzo.add(AdCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, 150, 40));
+        Lienzo.add(AdCampos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

@@ -20,7 +20,7 @@ public class Pantalla extends javax.swing.JFrame {
      */
     InicioSesion inicio = new InicioSesion();
     IntroDatos introduccionDatos = new IntroDatos();
-    CalDiarias p2 = new CalDiarias();
+    CalDiarias calDiarias = new CalDiarias();
     Ajustes ajustes = new Ajustes();
 
     public Pantalla() {        
@@ -155,6 +155,9 @@ public class Pantalla extends javax.swing.JFrame {
         ObjetivoDiario.setText("Objetivo Diario");
         ObjetivoDiario.setOpaque(true);
         ObjetivoDiario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ObjetivoDiarioMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ObjetivoDiarioMouseEntered(evt);
             }
@@ -348,6 +351,10 @@ public class Pantalla extends javax.swing.JFrame {
     private void IntroDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IntroDataMouseClicked
         verPestaña(introduccionDatos);
     }//GEN-LAST:event_IntroDataMouseClicked
+
+    private void ObjetivoDiarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ObjetivoDiarioMouseClicked
+        verPestaña(calDiarias);
+    }//GEN-LAST:event_ObjetivoDiarioMouseClicked
     
 
     /**
