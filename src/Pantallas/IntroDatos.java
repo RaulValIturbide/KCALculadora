@@ -28,7 +28,7 @@ public class IntroDatos extends javax.swing.JPanel {
     }
     public void generarCalTotal(){
         try{
-        FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia(), true);
+        FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia(), true);
         escritor.write(FicheroDia.calculoCalorico(TxtPeso.getText(),TxtCalorias.getText()));
         escritor.close();
         }catch(FileNotFoundException ex){
@@ -44,7 +44,7 @@ public class IntroDatos extends javax.swing.JPanel {
     public void generarAlimentoBasico() {
         if(comprobarDatos()){
         try {
-            FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\Dias\\" +"Dia " + FicheroDia.sacarDia(), true);
+            FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\Dias\\" +"Dia " + FicheroDia.sacarDia(), true);
             escritor.write(TxtAlimento.getText() + "\n");
             escritor.write(TxtPeso.getText() + "\n");
             escritor.write(TxtCalorias.getText() + "\n");

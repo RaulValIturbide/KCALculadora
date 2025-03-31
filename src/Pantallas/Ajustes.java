@@ -45,6 +45,8 @@ public class Ajustes extends javax.swing.JPanel {
         AdValores = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,8 +89,7 @@ public class Ajustes extends javax.swing.JPanel {
 
         Cambiar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         Cambiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cambiar.setText("CAMBIAR");
-        Cambiar.setOpaque(true);
+        Cambiar.setText("ACTUALIZAR");
 
         javax.swing.GroupLayout PanelCambiarLayout = new javax.swing.GroupLayout(PanelCambiar);
         PanelCambiar.setLayout(PanelCambiarLayout);
@@ -96,7 +97,7 @@ public class Ajustes extends javax.swing.JPanel {
             PanelCambiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCambiarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Cambiar, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                .addComponent(Cambiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelCambiarLayout.setVerticalGroup(
@@ -107,7 +108,7 @@ public class Ajustes extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(PanelCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 110, -1));
+        jPanel1.add(PanelCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 150, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 170, 10));
 
         AdValores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,16 +133,7 @@ public class Ajustes extends javax.swing.JPanel {
 
         jPanel1.add(AdValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 130, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 692, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ObjetivoDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObjetivoDiarioActionPerformed
@@ -164,6 +156,7 @@ public class Ajustes extends javax.swing.JPanel {
 
     private void PanelCambiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCambiarMouseClicked
         tomarNumero();
+      
         
     }//GEN-LAST:event_PanelCambiarMouseClicked
 
@@ -174,7 +167,7 @@ public class Ajustes extends javax.swing.JPanel {
     public void tomarNumero() {
         String expReg = "^(\\d{1,}$)|(^\\d{1,}(,|\\.)\\d{1,}$)";
         try {
-            FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
+            FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
             if (ObjetivoDiario.getText().matches(expReg)) {
                 escritor.write(ObjetivoDiario.getText());
                 escritor.close();

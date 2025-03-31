@@ -31,7 +31,7 @@ public class CalDiarias extends javax.swing.JPanel {
     public String leerObjCal() {
         String resultado = "";
         try {
-            FileReader lector = new FileReader(".\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
+            FileReader lector = new FileReader("..\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
             int data = lector.read();
             
             while (data != -1) {
