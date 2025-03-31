@@ -6,13 +6,11 @@ aunque no es necesario
 
 Es plenamente funcional y animo a todo aquel que este leyendo esto a descargarlo y ejecutar el exe para probarlo
 
-![Captura de pantalla 2025-03-31 170836](https://github.com/user-attachments/assets/4687a8c5-bd73-4874-ac87-486773b23bd3)
 
+![Captura de pantalla 2025-03-31 171347](https://github.com/user-attachments/assets/a0ab887f-12cf-4fe9-ac85-1470b83a33cc)
 
-![Captura de pantalla 2025-03-31 170650](https://github.com/user-attachments/assets/7883a409-3723-4ca8-9a8d-76c2e0a5d05c)
+![Captura de pantalla 2025-03-31 171407](https://github.com/user-attachments/assets/3c741a11-afac-4075-9066-44c174cc55ca)
 
+![Captura de pantalla 2025-03-31 171443](https://github.com/user-attachments/assets/37fc52ac-b41a-4305-99b0-a28851cdb035)
 
-![Captura de pantalla 2025-03-31 170911](https://github.com/user-attachments/assets/04695961-5418-4665-b4fc-2b3b62c1ed2e)
-
-
-![Captura de pantalla 2025-03-31 170941](https://github.com/user-attachments/assets/e0313501-b073-4802-93af-0e878724b76b)
+![Captura de pantalla 2025-03-31 171319](https://github.com/user-attachments/assets/481e0649-7ff9-4bc0-871c-a63595a815b9)
