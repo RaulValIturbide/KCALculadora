@@ -141,7 +141,7 @@ public class IntroDatos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel1.setText("NOMBRE ALIMENTO");
-        Lienzo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 180, 50));
+        Lienzo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 220, 50));
         Lienzo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 280, 20));
         Lienzo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 280, 20));
 
@@ -152,7 +152,7 @@ public class IntroDatos extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("CALORIAS EN 100 GR");
-        Lienzo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 190, 50));
+        Lienzo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 230, 50));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

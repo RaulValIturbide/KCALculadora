@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import Pantallas.*;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.imageio.ImageIO;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -23,11 +26,18 @@ public class Pantalla extends javax.swing.JFrame {
     CalDiarias calDiarias = new CalDiarias();
     Ajustes ajustes = new Ajustes();
 
-    public Pantalla() {        
+    public Pantalla() {    
+
+        setTitle("Kcalculadora");
         initComponents();
         setLocationRelativeTo(null);
         verPestaña(inicio);
-
+        try{
+        Image icono = ImageIO.read(getClass().getResource("/tools/img/vegetariano.png"));
+        setIconImage(icono);
+        }catch(Exception e){
+            System.out.println("Error con el icono");
+        }
   
     }
     public void verPestaña(JPanel pestaña){
