@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\baske\Documents\dev\Cacharreo\KCALculadora\dist\KCALculadora.jar</jar>
+  <outfile>C:\Users\baske\Documents\dev\Cacharreo\KCALculadora\dist\Kcalculadora.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\baske\Documents\dev\Cacharreo\KCALculadora\src\tools\img\vegetariano.ico</icon>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion>1.8</minVersion>
+    <maxVersion>24</maxVersion>
+    <opt>-Dsun.java2d.uiScale=1.0</opt>
+  </jre>
+</launch4jConfig>
