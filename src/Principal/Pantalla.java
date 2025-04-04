@@ -17,6 +17,13 @@ import javax.imageio.ImageIO;
  * @author baske
  */
 public class Pantalla extends javax.swing.JFrame {
+    
+    /*
+    
+        TO DO: Cuando el usuario no pone nada en actualizar el objetivo cambia a 0, es mejor que si el usuario no pone nada no se actualice
+        TO DO: Sacar los macronutrientes por alimento teniendo en cuenta el calculo macros x 100 gr
+        TO DO: Que el color en el que estan los datos de calTotales vayan cambiando de color conforme se acerquen al objetivo
+    */
 
     /**
      * Creates new form Pantalla

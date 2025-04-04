@@ -4,6 +4,7 @@
  */
 package Pantallas;
 
+import Data.FicheroDia;
 import java.awt.Color;
 import java.awt.Font;
 import static java.awt.font.TextAttribute.FONT;
@@ -39,13 +40,14 @@ public class Ajustes extends javax.swing.JPanel {
         ObjetivoDiario = new javax.swing.JTextField();
         LogoBasesDatos = new javax.swing.JLabel();
         TitAjustes = new javax.swing.JLabel();
-        PanelCambiar = new javax.swing.JPanel();
-        Cambiar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         AdValores = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        LbBorrarAlimentos = new javax.swing.JLabel();
+        PanelCambiar = new javax.swing.JPanel();
+        Cambiar = new javax.swing.JLabel();
+        PanelBorrarAlimentos = new javax.swing.JPanel();
+        TxtBorrar = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,41 +76,6 @@ public class Ajustes extends javax.swing.JPanel {
         TitAjustes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitAjustes.setText("AJUSTES");
         jPanel1.add(TitAjustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 220, -1));
-
-        PanelCambiar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PanelCambiarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelCambiarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelCambiarMouseExited(evt);
-            }
-        });
-
-        Cambiar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        Cambiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Cambiar.setText("ACTUALIZAR");
-
-        javax.swing.GroupLayout PanelCambiarLayout = new javax.swing.GroupLayout(PanelCambiar);
-        PanelCambiar.setLayout(PanelCambiarLayout);
-        PanelCambiarLayout.setHorizontalGroup(
-            PanelCambiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCambiarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Cambiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        PanelCambiarLayout.setVerticalGroup(
-            PanelCambiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelCambiarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Cambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(PanelCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 150, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 170, 10));
 
         AdValores.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -133,7 +100,80 @@ public class Ajustes extends javax.swing.JPanel {
 
         jPanel1.add(AdValores, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 130, 40));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 692, -1));
+        LbBorrarAlimentos.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        LbBorrarAlimentos.setText("Borrar Alimentos de Hoy");
+        jPanel1.add(LbBorrarAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, 184, 50));
+
+        PanelCambiar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelCambiarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelCambiarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelCambiarMouseExited(evt);
+            }
+        });
+
+        Cambiar.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        Cambiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Cambiar.setText("ACTUALIZAR");
+
+        javax.swing.GroupLayout PanelCambiarLayout = new javax.swing.GroupLayout(PanelCambiar);
+        PanelCambiar.setLayout(PanelCambiarLayout);
+        PanelCambiarLayout.setHorizontalGroup(
+            PanelCambiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Cambiar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        PanelCambiarLayout.setVerticalGroup(
+            PanelCambiarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCambiarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Cambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(PanelCambiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 100, 40));
+
+        PanelBorrarAlimentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PanelBorrarAlimentosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelBorrarAlimentosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelBorrarAlimentosMouseExited(evt);
+            }
+        });
+
+        TxtBorrar.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        TxtBorrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtBorrar.setText("BORRRAR");
+
+        javax.swing.GroupLayout PanelBorrarAlimentosLayout = new javax.swing.GroupLayout(PanelBorrarAlimentos);
+        PanelBorrarAlimentos.setLayout(PanelBorrarAlimentosLayout);
+        PanelBorrarAlimentosLayout.setHorizontalGroup(
+            PanelBorrarAlimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TxtBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        PanelBorrarAlimentosLayout.setVerticalGroup(
+            PanelBorrarAlimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TxtBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(PanelBorrarAlimentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, 100, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void ObjetivoDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ObjetivoDiarioActionPerformed
@@ -141,12 +181,12 @@ public class Ajustes extends javax.swing.JPanel {
     }//GEN-LAST:event_ObjetivoDiarioActionPerformed
 
     private void PanelCambiarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCambiarMouseEntered
-        Cambiar.setFont(new Font("Roboto",Font.BOLD,20));
+        Cambiar.setFont(new Font("Roboto",Font.BOLD,12));
         Cambiar.setForeground(new Color(255,255,255));
     }//GEN-LAST:event_PanelCambiarMouseEntered
 
     private void PanelCambiarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCambiarMouseExited
-        Cambiar.setFont(new Font("Roboto",Font.PLAIN,18));
+        Cambiar.setFont(new Font("Roboto",Font.PLAIN,10));
         Cambiar.setForeground(new Color(60,63,65));
     }//GEN-LAST:event_PanelCambiarMouseExited
 
@@ -155,44 +195,62 @@ public class Ajustes extends javax.swing.JPanel {
     }//GEN-LAST:event_ObjetivoDiarioMouseClicked
 
     private void PanelCambiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelCambiarMouseClicked
-        tomarNumero();
-      
-        
+       
+        tomarNumero();   
     }//GEN-LAST:event_PanelCambiarMouseClicked
 
     private void AdValoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdValoresMouseClicked
         AdValores.setVisible(false);
     }//GEN-LAST:event_AdValoresMouseClicked
 
-    public void tomarNumero() {
+    private void PanelBorrarAlimentosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBorrarAlimentosMouseEntered
+        TxtBorrar.setFont(new Font("Roboto",Font.BOLD,12));
+        TxtBorrar.setForeground(new Color(255,255,255));
+    }//GEN-LAST:event_PanelBorrarAlimentosMouseEntered
+
+    private void PanelBorrarAlimentosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBorrarAlimentosMouseExited
+        TxtBorrar.setFont(new Font("Roboto",Font.PLAIN,10));
+        TxtBorrar.setForeground(new Color(60,63,65));
+    }//GEN-LAST:event_PanelBorrarAlimentosMouseExited
+
+    private void PanelBorrarAlimentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBorrarAlimentosMouseClicked
+        FicheroDia.borrarDataDia(".\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia());
+    }//GEN-LAST:event_PanelBorrarAlimentosMouseClicked
+
+    public String tomarNumero() {
         String expReg = "^(\\d{1,}$)|(^\\d{1,}(,|\\.)\\d{1,}$)";
+        String objetivo = null;
         try {
-            FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
-            if (ObjetivoDiario.getText().matches(expReg)) {
+            FileWriter escritor = new FileWriter(".\\src\\tools\\etc\\ObjetivoDiario\\ObjetivoCal.txt");
+            if (ObjetivoDiario.getText().matches(expReg) && !ObjetivoDiario.getText().equals("")) {
                 escritor.write(ObjetivoDiario.getText());
                 escritor.close();
+                objetivo = ObjetivoDiario.getText();
                 ObjetivoDiario.setText("");
                 AdValores.setVisible(false);
             } else {
                 System.out.println("Texto no valido, solo numeros");
                 escritor.close();
                 AdValores.setVisible(true);
-                
             }
         } catch (FileNotFoundException ex) {
             System.out.println("Ruta no encontrada");
         } catch (IOException e) {
             System.out.println("Error con el escritor de objetivo calorico");
         }
+        return objetivo;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdValores;
     private javax.swing.JLabel Cambiar;
+    private javax.swing.JLabel LbBorrarAlimentos;
     private javax.swing.JLabel LbObjetivo;
     private javax.swing.JLabel LogoBasesDatos;
     private javax.swing.JTextField ObjetivoDiario;
+    private javax.swing.JPanel PanelBorrarAlimentos;
     private javax.swing.JPanel PanelCambiar;
     private javax.swing.JLabel TitAjustes;
+    private javax.swing.JLabel TxtBorrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

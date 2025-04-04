@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Data;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -18,13 +17,13 @@ public class FicheroCalData {
      * que al separarse por dias ser� el de hoy
      * @return devuelve un String que es un numero con la suma de las calorias totales
      */
-    private static String ruta = "..\\src\\tools\\etc\\CalDia\\CalTot " + FicheroDia.sacarDia();
+    private static String rutaCalTotales = ".\\src\\tools\\etc\\CalDia\\CalTot " + FicheroDia.sacarDia();
     
    
     public static String totalCalorias() {
         String Parrafo = "";
         try {
-            FileReader lector = new FileReader(ruta);
+            FileReader lector = new FileReader(rutaCalTotales);
             int data = lector.read();
 
             while (data != -1) {
@@ -33,7 +32,7 @@ public class FicheroCalData {
             }
             lector.close();
         } catch (FileNotFoundException ex) {
-            return "No encontrada la ruta";
+            return "No data";
         } catch (IOException e){
             System.out.println("Excepcion maxima con el lector");
         }

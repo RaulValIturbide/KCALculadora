@@ -1,49 +1,28 @@
 
 package Data;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Scanner;
-import java.util.InputMismatchException;
-import Exception.MenorACeroException;
-import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JTextField;
 /**
  *
  * @author baske
  */
 public class FicheroDia {
+    static String rutaCarbo = ".\\src\\tools\\etc\\Macronutriente\\Carbohidratos " + sacarDia();
+    static String rutaProte = ".\\src\\tools\\etc\\Macronutriente\\Proteinas " + sacarDia();
+    static String rutaGrasas = ".\\src\\tools\\etc\\Macronutriente\\Grasas " + sacarDia();
+
 
     public static Scanner teclado = new Scanner(System.in);
-        //Ruta desde la que se ejecuta en el powerShell
-       static String ruta = "..\\Data\\Dias\\" + sacarDia();
-        //Ruta desde la que se ejecuta en el netbeans
-       static String rutaAlt = ".\\Data\\Dias\\"+sacarDia();
     
-    public static void nuevoDia() {
-
-        try {          
-            FileWriter fichero = new FileWriter(ruta,true);        
-            fichero.write(separacion());
-            fichero.write(nuevoAlimento());
-            fichero.close();
-            System.out.println("Alimento introducido con �xito.");
-            
-        } catch (IOException ex) {
-            System.out.println("Error" + ex.getMessage());
-        }
-    }
     
-    private static String nuevoAlimento(){
-         String[] aData = introducirDatos();
-         String alimentoCompleto="";
-         for(int i = 0; i < 4; i++){
-             alimentoCompleto += aData[i]+ "\n" + aData[i+4] + "\n";
-            }
-         
-         return alimentoCompleto;
-    }
-    
+    /**
+     * Metodo que buscará cual es el dia del sistema
+     * @return devolverá un String con el numero del dia separado por "-" con un .txt al final
+     */
     public static String sacarDia(){
     LocalDate reloj = LocalDate.now();
     String dia = String.valueOf(reloj.getDayOfMonth());
@@ -53,66 +32,26 @@ public class FicheroDia {
     
     return fecha;
     }
-    private static String separacion(){
-        return "\n\tNuevo Alimento:\n";
-    }
     
     /**
-     * Este metodo comprueba que se introduzca un numero acorde a lo que el programa necesita, es decir, un tipo entero y superior a 0
-     * @param frase La pregunta que necesita realizar
-     * @return  devolver� un numero entero
+     * El objetivo de este metodo es que borre todos los datos del dia de hoy ya
+     * que aún no he encontrado una manera de borrar de alimento en alimento
+     *
+     * @param ruta La ruta de acceso al txt que se machacará dejandolo en blanco
      */
-    private static int comprobar(String frase){
-                boolean correcto = false;
-        int gramosTemp = 0;
-        while (!correcto) {
-            try {
-                System.out.println(frase);
-                System.out.print(">> ");
-                gramosTemp = teclado.nextInt();
-                if(gramosTemp > 0){
-                correcto = true;
-                }else{
-                    throw new MenorACeroException("Introduzca un valor mayor a 0");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Introduzca un valor numerico");
-                teclado.nextLine(); //Liberar buffer
-            }catch(MenorACeroException ex){
-                System.out.println(ex.getMessage());
-            }
+    public static void borrarDataDia(String ruta) {
+
+        try {
+            FileWriter escritor = new FileWriter(ruta);
+            escritor.write("0");
+            escritor.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("No se encuentra la ruta de acceso al txt para borrar el dia de hoy");
+        } catch (IOException e) {
+            System.out.println("Error fatal con el escritor de borrarDataDia");
         }
-        return gramosTemp;
     }
-    
-    private static String[] introducirDatos(){
-        String[] data = new String[8];
-       
-        //Frases del Programa
-        data[0] = "Alimento consumido:";
-        data[1] = "Cantidad consumida en gramos";
-        data[2] = "Caloria del alimento por cada 100 gramos";
-        data[3] = "Total calorias:";
-        
-        //Inicio de recopilaci�n de informaci�n
-        System.out.println(data[0]);
-        System.out.print(">> ");
-        data[4] = teclado.nextLine(); // Leer nombre del alimento
 
-        data[5] = String.valueOf(comprobar(data[1])); // Leer cantidad en gramos
-        teclado.nextLine(); // Limpiar buffer
-
-        data[6] = String.valueOf(comprobar(data[2])); // Leer calor�as por 100g
-        teclado.nextLine(); // Limpiar buffer
-
-        // C�lculo de calor�as totales
-        data[7] = calculoCalorico(data[5], data[6]);
-        
-       // FicheroCalData.crearDatosCalDia((data[7]));
-        
-        return data;
-    }
-    
     /**
      * Este metodo calcula la cantidad de calorias a trav�s de un calculo matem�tico b�sico
      * @param gramos la cantidad de gramos que el usuario ha consumido del alimento
@@ -137,25 +76,82 @@ public class FicheroDia {
         }
     }
     
-    public static void leerAlimentosDeHoy() {
+    public static void escribirMacros(JTextField carbo,JTextField proteinas,JTextField grasas) {   
+        escribirCarbo(carbo);
+        escribirProteinas(proteinas);
+        escribirGrasas(grasas);    
+    }
+    
+    /**
+     * Metodo para crear el txt de carbohidratos o para añadir nuevos numeros
+     * @param carbo el campo de texto del que sacaremos los carbohidratos
+     */
+    private static void escribirCarbo(JTextField carbo) {
+        if (Macronutrientes.comprobarCarbohidratos(carbo)) {
+            try {
+                FileWriter escritor = new FileWriter(rutaCarbo,true);
+                escritor.write(carbo.getText() + "\n");
+                escritor.close();
+                carbo.setText("");
 
-        try {
-            FileReader lector = new FileReader(ruta);
-
-            int data = lector.read();
-
-            while (data != -1) {
-                System.out.print((char) data);
-                data = lector.read();
+            } catch (FileNotFoundException ex) {
+                System.out.println("Error de ruta en los carbohidratos");
+            } catch (IOException e) {
+                System.out.println("Error fatal en el escritor de ruta de carbohidratos");
             }
-            lector.close();
 
-        } catch (FileNotFoundException ex) {
-            System.out.println("No hay datos de ninguna comida realizada hoy.\nPruebe a introducir un alimento primero.\n");
-        } catch (IOException e) {
-            System.out.println("Error fatal con el lector de alimentos de hoy");
+        } else {
+            System.out.println("Carbohidratos no concuerdan con la expReg, no se imprime");
+        }
+    }
+    
+    /**
+     * Metodo para crear el txt de proteinas o para añadir nuevos datos
+     * @param proteinas el campo de texto del que sacaremos las proteinas
+     */
+    private static void escribirProteinas(JTextField proteinas) {
+        if (Macronutrientes.comprobarProteinas(proteinas)) {
+            try {
+                FileWriter escritor = new FileWriter(rutaProte, true);
+                escritor.write(proteinas.getText() + "\n");
+                escritor.close();
+                proteinas.setText("");
+
+            } catch (FileNotFoundException ex) {
+                System.out.println("Error de ruta en las proteinas");
+            } catch (IOException e) {
+                System.out.println("Error fatal en el escritor de ruta de proteinas");
+            }
+
+        } else {
+            System.out.println("Proteinas no concuerdan con la expReg, no se imprime");
         }
 
     }
+    /**
+     * Metodo para crear el txt de proteinas o para añadir nuevos datos
+     *
+     * @param proteinas el campo de texto del que sacaremos las proteinas
+     */
+    private static void escribirGrasas(JTextField grasas) {
+        if (Macronutrientes.comprobarGrasas(grasas)) {
+            try {
+                FileWriter escritor = new FileWriter(rutaGrasas, true);
+                escritor.write(grasas.getText() + "\n");
+                escritor.close();
+                grasas.setText("");
+
+            } catch (FileNotFoundException ex) {
+                System.out.println("Error de ruta en las grasas");
+            } catch (IOException e) {
+                System.out.println("Error fatal en el escritor de ruta de grasas");
+            }
+
+        } else {
+            System.out.println("Grasas no concuerdan con la expReg, no se imprime");
+        }
+
+    }
+
     
 }

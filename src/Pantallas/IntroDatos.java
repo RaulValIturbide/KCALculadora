@@ -15,7 +15,8 @@ import java.io.IOException;
  * @author baske
  */
 public class IntroDatos extends javax.swing.JPanel {
-
+    String rutaCalTot = ".\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia();
+    String rutaCalDia = ".\\src\\tools\\etc\\Dias\\" +"Dia " + FicheroDia.sacarDia();
     /**
      * Creates new form IntroDatos
      */
@@ -28,7 +29,7 @@ public class IntroDatos extends javax.swing.JPanel {
     }
     public void generarCalTotal(){
         try{
-        FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\CalDia\\" +"CalTot " + FicheroDia.sacarDia(), true);
+        FileWriter escritor = new FileWriter(rutaCalTot, true);
         escritor.write(FicheroDia.calculoCalorico(TxtPeso.getText(),TxtCalorias.getText()));
         escritor.close();
         }catch(FileNotFoundException ex){
@@ -44,12 +45,13 @@ public class IntroDatos extends javax.swing.JPanel {
     public void generarAlimentoBasico() {
         if(comprobarDatos()){
         try {
-            FileWriter escritor = new FileWriter("..\\src\\tools\\etc\\Dias\\" +"Dia " + FicheroDia.sacarDia(), true);
+            FileWriter escritor = new FileWriter(rutaCalDia, true);
             escritor.write(TxtAlimento.getText() + "\n");
             escritor.write(TxtPeso.getText() + "\n");
             escritor.write(TxtCalorias.getText() + "\n");
             escritor.close();
             generarCalTotal();
+            FicheroDia.escribirMacros(TxtCarbo,TxtProteinas,TxtGrasas);
             AlimentoAdd.setVisible(true);
             borrarCamposBasicos();
             AdCampos.setVisible(false);
@@ -86,7 +88,6 @@ public class IntroDatos extends javax.swing.JPanel {
 
     }
 
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,13 +110,13 @@ public class IntroDatos extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        TxtCarbo = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel14 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        TxtProteinas = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        TxtGrasas = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         TxtCalorias = new javax.swing.JTextField();
         TxtAlimento = new javax.swing.JTextField();
@@ -170,13 +171,13 @@ public class IntroDatos extends javax.swing.JPanel {
 
         jLabel5.setText("CARBOHIDRATOS");
 
-        jTextField4.setBackground(new java.awt.Color(214, 217, 223));
-        jTextField4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField4.setBorder(null);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        TxtCarbo.setBackground(new java.awt.Color(214, 217, 223));
+        TxtCarbo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtCarbo.setForeground(new java.awt.Color(0, 0, 0));
+        TxtCarbo.setBorder(null);
+        TxtCarbo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                TxtCarboActionPerformed(evt);
             }
         });
 
@@ -184,13 +185,13 @@ public class IntroDatos extends javax.swing.JPanel {
 
         jLabel14.setText("PROTEINAS");
 
-        jTextField5.setBackground(new java.awt.Color(214, 217, 223));
-        jTextField5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        TxtProteinas.setBackground(new java.awt.Color(214, 217, 223));
+        TxtProteinas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtProteinas.setForeground(new java.awt.Color(0, 0, 0));
+        TxtProteinas.setBorder(null);
+        TxtProteinas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                TxtProteinasActionPerformed(evt);
             }
         });
 
@@ -198,13 +199,13 @@ public class IntroDatos extends javax.swing.JPanel {
 
         jLabel15.setText("GRASAS");
 
-        jTextField6.setBackground(new java.awt.Color(214, 217, 223));
-        jTextField6.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField6.setBorder(null);
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        TxtGrasas.setBackground(new java.awt.Color(214, 217, 223));
+        TxtGrasas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        TxtGrasas.setForeground(new java.awt.Color(0, 0, 0));
+        TxtGrasas.setBorder(null);
+        TxtGrasas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                TxtGrasasActionPerformed(evt);
             }
         });
 
@@ -224,7 +225,7 @@ public class IntroDatos extends javax.swing.JPanel {
                         .addGap(16, 16, 16)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4)
+                        .addComponent(TxtCarbo)
                         .addGap(15, 15, 15)))
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -234,7 +235,7 @@ public class IntroDatos extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtProteinas, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(128, 128, 128)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -243,7 +244,7 @@ public class IntroDatos extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtGrasas, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(128, 128, 128)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -264,7 +265,7 @@ public class IntroDatos extends javax.swing.JPanel {
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(TxtCarbo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +273,7 @@ public class IntroDatos extends javax.swing.JPanel {
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtProteinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -280,7 +281,7 @@ public class IntroDatos extends javax.swing.JPanel {
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtGrasas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -470,17 +471,17 @@ public class IntroDatos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jLabel13MouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void TxtCarboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCarboActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_TxtCarboActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void TxtProteinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtProteinasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_TxtProteinasActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void TxtGrasasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtGrasasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_TxtGrasasActionPerformed
 
     private void AñadirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseEntered
        Añadir.setForeground(new Color(255,255,255));
@@ -493,8 +494,10 @@ public class IntroDatos extends javax.swing.JPanel {
     private void AñadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AñadirMouseClicked
         AlimentoAdd.setVisible(false);
         AdCampos.setVisible(false);
-        comprobarDatos();
         generarAlimentoBasico();
+        
+        
+        
     }//GEN-LAST:event_AñadirMouseClicked
 
     private void AlimentoAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AlimentoAddMouseClicked
@@ -531,7 +534,10 @@ public class IntroDatos extends javax.swing.JPanel {
     private javax.swing.JLabel TitIntroducir;
     private javax.swing.JTextField TxtAlimento;
     private javax.swing.JTextField TxtCalorias;
+    private javax.swing.JTextField TxtCarbo;
+    private javax.swing.JTextField TxtGrasas;
     private javax.swing.JTextField TxtPeso;
+    private javax.swing.JTextField TxtProteinas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -554,8 +560,5 @@ public class IntroDatos extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
